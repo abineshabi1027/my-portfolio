@@ -132,8 +132,11 @@
 
             <!-- Profile Picture Frame (Slot for user image with futuristic fallback) -->
             <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-2xl shadow-cyan-500/40 bg-slate-900 group">
-              <!-- Default Futuristic Data Analyst Avatar Graphic -->
-              <div id="profile-picture-container" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
+              <!-- Profile Picture -->
+              <img src="images/profile.jpg" alt="Abinesh S" class="absolute inset-0 w-full h-full object-cover object-top" id="custom-profile-img" onerror="this.style.display='none'; document.getElementById('profile-picture-container').style.display='flex';">
+              
+              <!-- Futuristic Fallback Graphic (shown if image fails to load) -->
+              <div id="profile-picture-container" class="w-full h-full flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 hidden">
                 <svg class="w-24 h-24 text-cyan-400 drop-shadow-[0_0_15px_rgba(0,242,254,0.6)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
@@ -142,7 +145,6 @@
                 </svg>
                 <span class="text-[10px] font-mono text-slate-400 tracking-wider mt-1">ABINESH S</span>
               </div>
-              <img src="images/profile.jpg" alt="Abinesh S" class="absolute inset-0 w-full h-full object-cover hidden" id="custom-profile-img" onerror="this.classList.add('hidden')">
               
               <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/10 via-transparent to-white/10 pointer-events-none"></div>
             </div>
