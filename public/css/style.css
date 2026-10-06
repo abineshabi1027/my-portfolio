@@ -1,0 +1,443 @@
+/* ==========================================================================
+   ANTIGRAVITY & GLASSMORPHISM DESIGN SYSTEM
+   Abinesh S - Data Analyst Portfolio
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-deep: #030712;
+  --bg-card: rgba(11, 19, 43, 0.55);
+  --bg-card-hover: rgba(17, 28, 60, 0.75);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-glow: rgba(0, 242, 254, 0.35);
+  --neon-cyan: #00f2fe;
+  --neon-blue: #4facfe;
+  --neon-purple: #9d4edd;
+  --neon-pink: #f72585;
+  --neon-emerald: #00f5d4;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+/* Base Setup */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom Cosmic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f2fe 0%, #7928ca 100%);
+  border-radius: 9999px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4facfe 0%, #f72585 100%);
+}
+
+/* Ambient Deep Space Background Canvas */
+#antigravity-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cosmic Background Glow Blobs */
+.cosmic-glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.blob-1 {
+  top: -10%;
+  left: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.5) 0%, rgba(79, 172, 254, 0) 70%);
+  animation: float-slow 14s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  top: 35%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.45) 0%, rgba(247, 37, 133, 0) 70%);
+  animation: float-medium 18s ease-in-out infinite alternate;
+}
+
+.blob-3 {
+  bottom: 5%;
+  left: 5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.35) 0%, rgba(0, 242, 254, 0) 70%);
+  animation: float-slow 16s ease-in-out infinite alternate;
+}
+
+/* Glassmorphism Components */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.45),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 242, 254, 0.35);
+  box-shadow: 0 16px 45px 0 rgba(0, 242, 254, 0.12),
+              0 0 20px 0 rgba(157, 78, 221, 0.15),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-nav {
+  background: rgba(6, 11, 25, 0.7);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-badge {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: all 0.3s ease;
+}
+
+.glass-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+/* Antigravity Floating Keyframes (Zero Gravity Simulation) */
+@keyframes float-slow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes float-medium {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes float-fast {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes aura-pulse {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.6;
+    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.6));
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 45px rgba(157, 78, 221, 0.85));
+  }
+  100% {
+    transform: scale(0.96);
+    opacity: 0.6;
+    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.6));
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+/* Antigravity utility classes */
+.float-element-slow {
+  animation: float-slow 7s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+.float-element-medium {
+  animation: float-medium 5.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+.float-element-fast {
+  animation: float-fast 4s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+.aura-glow {
+  animation: aura-pulse 4.5s ease-in-out infinite;
+}
+
+.orbit-ring {
+  animation: orbit-rotate 22s linear infinite;
+}
+
+.orbit-ring-reverse {
+  animation: orbit-reverse 26s linear infinite;
+}
+
+/* 3D Tilt Card Base */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.4, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.tilt-inner {
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+}
+
+.tilt-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: overlay;
+}
+
+/* Hero Avatar Cosmic Aura */
+.avatar-aura-wrapper {
+  position: relative;
+  display: inline-block;
+  animation: float-slow 6.5s ease-in-out infinite;
+}
+
+.avatar-aura-glow {
+  position: absolute;
+  inset: -14px;
+  background: conic-gradient(from 180deg at 50% 50%, #00f2fe 0deg, #9d4edd 140deg, #f72585 240deg, #00f2fe 360deg);
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.75;
+  animation: orbit-rotate 10s linear infinite;
+  z-index: -1;
+}
+
+.avatar-ring-outer {
+  position: absolute;
+  inset: -8px;
+  border: 2px dashed rgba(0, 242, 254, 0.5);
+  border-radius: 50%;
+  animation: orbit-rotate 24s linear infinite;
+}
+
+.avatar-ring-inner {
+  position: absolute;
+  inset: -18px;
+  border: 1px dotted rgba(157, 78, 221, 0.4);
+  border-radius: 50%;
+  animation: orbit-reverse 30s linear infinite;
+}
+
+/* Glowing Neon Text and Gradients */
+.text-gradient-cyan-purple {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 40%, #9d4edd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber-rose {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 60%, #a1c4fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-border-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-border-pulse::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  animation: scanline 4s linear infinite;
+}
+
+/* Typing Caret */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.15em;
+  background-color: var(--neon-cyan);
+  margin-left: 4px;
+  vertical-align: middle;
+  box-shadow: 0 0 10px var(--neon-cyan);
+  animation: cursor-blink 0.9s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Reveal-on-scroll states */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px) scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Interactive Modals */
+.glass-modal {
+  background: rgba(8, 14, 31, 0.92);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 40px rgba(0, 242, 254, 0.2);
+}
+
+/* Certificate Glow Frame */
+.certificate-frame {
+  position: relative;
+  background: linear-gradient(145deg, rgba(16, 26, 56, 0.6) 0%, rgba(7, 13, 30, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.certificate-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, transparent 40%, rgba(0, 242, 254, 0.4) 50%, transparent 60%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.certificate-frame:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 242, 254, 0.25);
+}
+
+.certificate-frame:hover::before {
+  opacity: 1;
+}
+
+/* Progress bar animated glow */
+.progress-bar-glow {
+  box-shadow: 0 0 12px currentColor;
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Floating Badges in Constellation */
+.constellation-node {
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+.constellation-node::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: -1;
+}
+
+.constellation-node:hover::after {
+  opacity: 1;
+}

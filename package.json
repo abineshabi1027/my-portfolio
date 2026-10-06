@@ -1,0 +1,23 @@
+{
+  "name": "abinesh-portfolio",
+  "version": "1.0.0",
+  "description": "Antigravity & Glassmorphism Portfolio for Abinesh S - Data Analyst",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "data-analyst",
+    "antigravity",
+    "glassmorphism",
+    "express"
+  ],
+  "author": "Abinesh S",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
+  }
+}
