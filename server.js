@@ -201,6 +201,11 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'active', system: 'Antigravity Portfolio Backend', timestamp: new Date() });
 });
 
+// Route for dedicated Projects & Certificates page
+app.get('/work', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'portfolio.html'));
+});
+
 // Fallback to index.html for single page client navigation
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

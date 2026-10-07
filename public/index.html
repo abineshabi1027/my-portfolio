@@ -69,12 +69,12 @@
 
       <!-- Desktop Navigation Links -->
       <ul class="hidden md:flex items-center gap-7 text-xs font-medium tracking-wide">
-        <li><a href="#hero" class="nav-link text-slate-300 hover:text-cyan-400 transition">Universe</a></li>
+        <li><a href="/" class="nav-link text-slate-300 hover:text-cyan-400 transition">Universe</a></li>
         <li><a href="#about" class="nav-link text-slate-300 hover:text-cyan-400 transition">Foundation</a></li>
         <li><a href="#skills" class="nav-link text-slate-300 hover:text-cyan-400 transition">Skills Galaxy</a></li>
-        <li><a href="#projects" class="nav-link text-slate-300 hover:text-cyan-400 transition">Projects</a></li>
+        <li><a href="/portfolio.html#projects" class="nav-link text-slate-300 hover:text-cyan-400 transition">Projects</a></li>
         <li><a href="#experience" class="nav-link text-slate-300 hover:text-cyan-400 transition">Experience</a></li>
-        <li><a href="#certificates" class="nav-link text-slate-300 hover:text-cyan-400 transition">Certificates</a></li>
+        <li><a href="/portfolio.html#certificates" class="nav-link text-slate-300 hover:text-cyan-400 transition">Certificates</a></li>
       </ul>
 
       <!-- CTA Buttons & Admin Portal -->
@@ -96,12 +96,12 @@
   <!-- Mobile Dropdown Menu -->
   <div id="mobile-menu" class="fixed inset-x-4 top-24 z-40 hidden md:hidden">
     <div class="glass-panel rounded-2xl p-6 border border-cyan-500/20 shadow-2xl space-y-4 text-center">
-      <a href="#hero" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Universe</a>
+      <a href="/" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Universe</a>
       <a href="#about" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Foundation</a>
       <a href="#skills" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Skills Galaxy</a>
-      <a href="#projects" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Projects</a>
+      <a href="/portfolio.html#projects" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Projects</a>
       <a href="#experience" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Experience</a>
-      <a href="#certificates" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Certificates</a>
+      <a href="/portfolio.html#certificates" class="block text-sm text-slate-200 hover:text-cyan-400 py-1">Certificates</a>
       <a href="/admin/dashboard" class="block text-xs font-mono text-purple-300 py-1"><i class="fas fa-lock mr-1"></i> Admin Deck</a>
       <a href="#contact" class="block text-sm text-cyan-400 font-semibold py-1">Transmit Signal</a>
     </div>
@@ -192,7 +192,7 @@
             <span>Explore My Data Universe</span>
             <i class="fas fa-arrow-down text-xs animate-bounce"></i>
           </a>
-          <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-full font-heading font-medium text-sm tracking-wide glass-panel text-white hover:text-cyan-300 hover:border-cyan-400/50 transition duration-300 flex items-center justify-center gap-2">
+          <a href="/portfolio.html#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-full font-heading font-medium text-sm tracking-wide glass-panel text-white hover:text-cyan-300 hover:border-cyan-400/50 transition duration-300 flex items-center justify-center gap-2">
             <i class="fas fa-database text-cyan-400"></i>
             <span>Database Projects</span>
           </a>
@@ -319,57 +319,30 @@
     </section>
 
     <!-- ==============================================================
-         4. PROJECTS SHOWCASE (Dynamic Database-Driven Showcase)
+         4. SCROLL-DRIVEN IMAGE SEQUENCE (CLEAN & MINIMALISTIC - NO CANVAS)
          ============================================================== -->
-    <section id="projects" class="py-24 px-4 max-w-6xl mx-auto relative">
-      <div class="reveal-on-scroll text-center max-w-2xl mx-auto mb-16 space-y-3">
-        <span class="text-xs font-mono tracking-widest text-cyan-400 uppercase">Live Architectures</span>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold tracking-tight">Projects Showcase</h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Full-stack applications and predictive models queried in real-time from the SQLite `projects` relational table.
-        </p>
-      </div>
-
-      <!-- Projects Container dynamically hydrated by main.js from /api/projects -->
-      <div id="projects-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Skeleton Card 1 -->
-        <div class="glass-panel rounded-3xl p-8 animate-pulse space-y-6">
-          <div class="h-6 bg-slate-800 rounded w-1/3"></div>
-          <div class="h-8 bg-slate-800 rounded w-2/3"></div>
-          <div class="h-20 bg-slate-800 rounded w-full"></div>
-          <div class="h-10 bg-slate-800 rounded w-1/2"></div>
-        </div>
-        <!-- Skeleton Card 2 -->
-        <div class="glass-panel rounded-3xl p-8 animate-pulse space-y-6">
-          <div class="h-6 bg-slate-800 rounded w-1/3"></div>
-          <div class="h-8 bg-slate-800 rounded w-2/3"></div>
-          <div class="h-20 bg-slate-800 rounded w-full"></div>
-          <div class="h-10 bg-slate-800 rounded w-1/2"></div>
-        </div>
+    <section id="sequence-section" class="sequence-scroll-section relative">
+      <div class="sequence-sticky-container">
+        <img id="sequence-frame" src="images/ezgif-frame-001.jpg" alt="Scroll Animation Frame" class="sequence-frame-img" loading="eager">
       </div>
     </section>
 
     <!-- ==============================================================
-         5. EXPERIENCE & CERTIFICATES (Database Hydrated)
+         5. OPERATIONAL EXPERIENCE (Database Hydrated)
          ============================================================== -->
     <section id="experience" class="py-24 px-4 max-w-6xl mx-auto relative">
       
       <!-- Section Header -->
       <div class="reveal-on-scroll text-center max-w-2xl mx-auto mb-16 space-y-3">
         <span class="text-xs font-mono tracking-widest text-cyan-400 uppercase">Operational Track Record</span>
-        <h2 class="text-3xl sm:text-4xl font-heading font-bold tracking-tight">Experience & Certifications</h2>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold tracking-tight text-white">Experience & Lab Work</h2>
         <p class="text-slate-400 text-sm sm:text-base">
-          Real laboratory analytics experience and authenticated industry certifications.
+          Real laboratory analytics experience and data engineering workflows.
         </p>
       </div>
 
       <!-- Experience Slot -->
-      <div class="mb-20 space-y-6">
-        <h3 class="text-xl font-heading font-bold text-white flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-cyan-400 shadow-md shadow-cyan-400"></span>
-          <span>Experience Slot (Analytics Workflow Timeline)</span>
-        </h3>
-
+      <div class="mb-12 space-y-6">
         <div class="glass-panel rounded-2xl p-7 relative border border-cyan-500/20 tilt-card reveal-on-scroll delay-100 float-element-slow">
           <div class="tilt-inner space-y-4">
             <div class="flex flex-wrap items-center justify-between gap-2">
@@ -407,41 +380,12 @@
         </div>
       </div>
 
-      <!-- Certificates Slot (Dynamic Database-Driven Grid) -->
-      <div id="certificates" class="space-y-6">
-        <div class="flex items-center justify-between flex-wrap gap-2">
-          <h3 class="text-xl font-heading font-bold text-white flex items-center gap-3">
-            <span class="w-3 h-3 rounded-full bg-purple-400 shadow-md shadow-purple-400"></span>
-            <span>Certificates Slot (SQLite `certificates` Table)</span>
-          </h3>
-          <span class="text-xs font-mono text-slate-400">
-            <i class="fas fa-info-circle mr-1 text-cyan-400"></i> Click any frame to verify credentials
-          </span>
-        </div>
-
-        <!-- Certificates Container dynamically hydrated by main.js from /api/certificates -->
-        <div id="certificates-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="certificate-frame rounded-2xl p-6 animate-pulse space-y-4">
-            <div class="w-12 h-12 bg-slate-800 rounded-xl"></div>
-            <div class="h-4 bg-slate-800 rounded w-1/3"></div>
-            <div class="h-6 bg-slate-800 rounded w-full"></div>
-          </div>
-          <div class="certificate-frame rounded-2xl p-6 animate-pulse space-y-4">
-            <div class="w-12 h-12 bg-slate-800 rounded-xl"></div>
-            <div class="h-4 bg-slate-800 rounded w-1/3"></div>
-            <div class="h-6 bg-slate-800 rounded w-full"></div>
-          </div>
-          <div class="certificate-frame rounded-2xl p-6 animate-pulse space-y-4">
-            <div class="w-12 h-12 bg-slate-800 rounded-xl"></div>
-            <div class="h-4 bg-slate-800 rounded w-1/3"></div>
-            <div class="h-6 bg-slate-800 rounded w-full"></div>
-          </div>
-          <div class="certificate-frame rounded-2xl p-6 animate-pulse space-y-4">
-            <div class="w-12 h-12 bg-slate-800 rounded-xl"></div>
-            <div class="h-4 bg-slate-800 rounded w-1/3"></div>
-            <div class="h-6 bg-slate-800 rounded w-full"></div>
-          </div>
-        </div>
+      <!-- Quick Link to Dedicated Projects & Certificates Page -->
+      <div class="text-center pt-6">
+        <a href="/portfolio.html" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-heading font-semibold text-sm bg-gradient-to-r from-cyan-500 to-purple-600 text-slate-950 hover:shadow-xl hover:shadow-cyan-500/25 transition">
+          <span>Explore Dedicated Projects & Accreditations</span>
+          <i class="fas fa-arrow-right text-xs"></i>
+        </a>
       </div>
 
     </section>
@@ -595,6 +539,7 @@
 
   <!-- Scripts -->
   <script src="js/particles.js"></script>
+  <script src="js/sequence.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -441,3 +441,41 @@ body {
 .constellation-node:hover::after {
   opacity: 1;
 }
+/* ==========================================================================
+   IMAGE SEQUENCE SCROLL ANIMATION (CLEAN & MINIMALISTIC)
+   No Canvas, Pure HTML <img> with RequestAnimationFrame & Preload
+   ========================================================================== */
+
+.sequence-scroll-section {
+  position: relative;
+  height: 260vh; /* Controlled scroll distance to smoothly scrub through 50 frames */
+  width: 100%;
+}
+
+.sequence-sticky-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  z-index: 20;
+}
+
+.sequence-frame-img {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}

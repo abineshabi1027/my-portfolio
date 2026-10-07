@@ -528,6 +528,12 @@ def serve_index():
     return send_from_directory('public', 'index.html')
 
 
+@app.route('/work')
+def serve_work():
+    """Serves the dedicated Projects & Certificates page."""
+    return send_from_directory('public', 'portfolio.html')
+
+
 @app.route('/<path:path>')
 def serve_static(path):
     """Static assets fallback."""
