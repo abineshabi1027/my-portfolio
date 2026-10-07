@@ -1,78 +1,62 @@
 /**
  * ==============================================================================
- * SCROLL-DRIVEN IMAGE SEQUENCE ENGINE (NO CANVAS)
- * Smoothly scrubs an <img> src through 50 JPG frames with preloading & rAF
+ * FULL-SCREEN FIXED BACKGROUND IMAGE SEQUENCE SCROLL ENGINE (NO CANVAS)
+ * Smoothly scrubs background <img> through 50 JPG frames across entire document
  * ==============================================================================
  */
 
-(function initImageSequenceScroll() {
+(function initBackgroundSequenceScroll() {
   const TOTAL_FRAMES = 50;
   const FRAME_PREFIX = 'images/ezgif-frame-';
   const FRAME_EXTENSION = '.jpg';
 
-  // Format frame number with 3 digits (e.g., 1 -> "001")
+  // Format frame number with 3 digits (e.g. 1 -> "001")
   function getFrameSrc(index) {
-    const paddedIndex = String(index).padStart(3, '0');
-    return `${FRAME_PREFIX}${paddedIndex}${FRAME_EXTENSION}`;
+    const padded = String(index).padStart(3, '0');
+    return `${FRAME_PREFIX}${padded}${FRAME_EXTENSION}`;
   }
 
-  // Preload all image frames in memory to eliminate flash, flicker, or lag
-  const preloadedImages = new Map();
-  let loadedCount = 0;
-
-  function preloadFrames() {
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      const img = new Image();
-      const src = getFrameSrc(i);
-      img.src = src;
-      img.onload = () => {
-        loadedCount++;
-      };
-      img.onerror = () => {
-        // Fallback or retry silently
-      };
-      preloadedImages.set(i, img);
-    }
+  // Preload all 50 frames into memory immediately to prevent flashing/lag
+  const preloadedFrames = new Map();
+  for (let i = 1; i <= TOTAL_FRAMES; i++) {
+    const img = new Image();
+    img.src = getFrameSrc(i);
+    preloadedFrames.set(i, img);
   }
-
-  // Preload immediately
-  preloadFrames();
 
   document.addEventListener('DOMContentLoaded', () => {
-    const section = document.getElementById('sequence-section');
-    const sequenceImg = document.getElementById('sequence-frame');
+    const bgImg = document.getElementById('bg-sequence-frame');
+    if (!bgImg) return;
 
-    if (!section || !sequenceImg) return;
-
-    let currentRenderedFrame = 1;
+    let currentFrame = 1;
     let ticking = false;
 
-    function updateFrameOnScroll() {
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+    function onScrollUpdate() {
+      // Calculate overall scroll percentage across the entire document
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      const clientHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      // Section total scrollable travel distance
-      const totalScrollableDistance = rect.height - windowHeight;
+      const maxScrollable = scrollHeight - clientHeight;
 
-      if (totalScrollableDistance <= 0) {
+      if (maxScrollable <= 0) {
         ticking = false;
         return;
       }
 
-      // Progress: 0 when top of section meets top of viewport, 1 when bottom meets bottom
-      const scrolledPastTop = -rect.top;
-      const progress = Math.min(Math.max(scrolledPastTop / totalScrollableDistance, 0), 1);
+      // Progress normalized from 0.0 to 1.0
+      const scrollProgress = Math.min(Math.max(scrollTop / maxScrollable, 0), 1);
 
-      // Map progress [0, 1] to frame index [1, 50]
-      const frameIndex = Math.min(
+      // Map progress [0, 1] across [1, 50] frames
+      const targetFrame = Math.min(
         TOTAL_FRAMES,
-        Math.max(1, Math.floor(progress * (TOTAL_FRAMES - 1)) + 1)
+        Math.max(1, Math.floor(scrollProgress * (TOTAL_FRAMES - 1)) + 1)
       );
 
-      if (frameIndex !== currentRenderedFrame) {
-        currentRenderedFrame = frameIndex;
-        // Swap src using the cached preloaded image
-        sequenceImg.src = getFrameSrc(frameIndex);
+      // Only touch DOM if the frame changed
+      if (targetFrame !== currentFrame) {
+        currentFrame = targetFrame;
+        bgImg.src = getFrameSrc(targetFrame);
       }
 
       ticking = false;
@@ -80,19 +64,19 @@
 
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateFrameOnScroll);
+        window.requestAnimationFrame(onScrollUpdate);
         ticking = true;
       }
     }, { passive: true });
 
     window.addEventListener('resize', () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateFrameOnScroll);
+        window.requestAnimationFrame(onScrollUpdate);
         ticking = true;
       }
     }, { passive: true });
 
-    // Initial positioning check
-    updateFrameOnScroll();
+    // Initial sync
+    onScrollUpdate();
   });
 })();
